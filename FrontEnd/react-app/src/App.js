@@ -1,12 +1,18 @@
-import "./App.css";
 import Footer from "./Components/Footer.jsx";
+import Header from "./Components/Header";
+import { Container } from "react-bootstrap";
 
 function App() {
   return (
-    <div className="App">
-      <h1>SwiftMart</h1>
+    <>
+      <Header />
+      <main>
+        <Container>
+          <h1>SwiftMart</h1>
+        </Container>
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }
 
