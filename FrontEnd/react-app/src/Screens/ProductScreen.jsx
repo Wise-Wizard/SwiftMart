@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import Rating from "../Components/Rating";
 
 function ProductCard(props) {
   return (
@@ -12,8 +13,17 @@ function ProductCard(props) {
       >
         <a href={`/product/${props.productDetails._id}`}>
           <Card.Img src={props.productDetails.image} variant="top"></Card.Img>
-          <Card.Title>{props.productDetails.name}</Card.Title>
-          <Card.Subtitle>{props.productDetails.price} $</Card.Subtitle>
+          <Card.Body>
+            <Card.Title as="div">
+              <strong>{props.productDetails.name}</strong>
+            </Card.Title>
+            <Card.Text as="div">
+              <div>{props.productDetails.price} $</div>
+            </Card.Text>
+            <Card.Text as="div">
+              <Rating value={props.productDetails.rating}></Rating>
+            </Card.Text>
+          </Card.Body>
         </a>
       </Card>
     </>
