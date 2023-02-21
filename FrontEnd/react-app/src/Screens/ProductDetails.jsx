@@ -3,7 +3,7 @@ function ProductPage() {
   return (
     <>
       <h3>Product Page</h3>
-      <p>Contact Us</p>
+      <p>Contact Us Here</p>
     </>
   );
 }
