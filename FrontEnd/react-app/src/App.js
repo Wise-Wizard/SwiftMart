@@ -12,11 +12,10 @@ function App() {
       <Header />
       <main>
         <Container>
-          <h1>SwiftMart</h1>
           {/* <Spline scene="https://prod.spline.design/ufgec588jlu77XD9/scene.splinecode" /> */}
           <Routes>
             <Route path="/" element={<Home />} exact />
-            <Route path="/product/:id" element={<ProductPage />} />
+            <Route path="/product/:id" element={<ProductPage />} exact />
           </Routes>
         </Container>
       </main>
