@@ -20,7 +20,7 @@ main {
   padding-bottom: 25px;
   border: 0;
   border-radius: 0;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
   font-size: 18px;
   letter-spacing: 4px;
 }
@@ -70,7 +70,7 @@ button span {
   letter-spacing: 3px;
   text-align: center;
   transform: translate(-50%, -50%);
-  color: white;
+  color: black;
   transition: all 2s ease;
 }
 

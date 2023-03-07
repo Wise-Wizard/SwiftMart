@@ -1,7 +1,7 @@
 import React from "react";
 import Product from "../products";
 import { Row, Col, ListGroup, ListGroupItem, Image } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Rating from "../Components/Rating";
 
 function ProductPage({ match }) {
@@ -30,7 +30,7 @@ function ProductPage({ match }) {
         </Col>
         <Col md={3}>
           <ListGroup>
-            <ListGroupItem variant="primary">
+            <ListGroupItem>
               <Row>
                 <Col>
                   <h3>Status:</h3>
@@ -42,11 +42,11 @@ function ProductPage({ match }) {
                 </Col>
               </Row>
             </ListGroupItem>
-            <ListGroupItem>
+            <ListGroupItem variant="primary">
               <div class="text-center">
                 <button>
                   <span>
-                    <h6>Add to Cart</h6>
+                    <h5>Add to Cart</h5>
                   </span>
                 </button>
               </div>

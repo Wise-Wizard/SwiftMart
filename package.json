@@ -1,0 +1,19 @@
+{
+  "name": "swiftmart",
+  "version": "1.0.0",
+  "description": "ECOM Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wise-Wizard/SwiftMart.git"
+  },
+  "author": "Saransh SHankar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wise-Wizard/SwiftMart/issues"
+  },
+  "homepage": "https://github.com/Wise-Wizard/SwiftMart#readme"
+}
