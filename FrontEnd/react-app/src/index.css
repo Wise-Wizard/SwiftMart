@@ -4,6 +4,12 @@
 main {
   min-height: 80vh;
 }
+.card {
+  border-radius: 20px;
+  padding: 5px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+}
 
 .card-title {
   font-size: 25px;

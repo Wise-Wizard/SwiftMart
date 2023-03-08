@@ -8,9 +8,11 @@ function ProductCard(props) {
     <>
       <Card
         border="danger"
-        style={{ width: "18rem" }}
+        style={{
+          width: "18rem",
+        }}
         className="my-3 p-3 rounded"
-        bg="primary"
+        bg="lightgrey"
       >
         <Link to={`/product/${props.productDetails._id}`}>
           <Card.Img src={props.productDetails.image} variant="top"></Card.Img>

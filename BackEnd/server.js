@@ -2,9 +2,13 @@ const express = require("express");
 const products = require("./Data/products");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const connectDB = require("./Config/config");
 
 //dotenv configuration
 dotenv.config();
+
+//Connecting to MongoDB
+connectDB();
 
 const app = express();
 

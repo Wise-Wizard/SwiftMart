@@ -5,6 +5,7 @@
 /FrontEnd/react-app/node_modules
 /.pnp
 .pnp.js
+.env
 
 # testing
 /coverage
