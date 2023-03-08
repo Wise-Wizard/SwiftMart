@@ -1,6 +1,10 @@
 const express = require("express");
 const products = require("./Data/products");
 const cors = require("cors");
+const dotenv = require("dotenv");
+
+//dotenv configuration
+dotenv.config();
 
 const app = express();
 
@@ -20,6 +24,6 @@ app.get("/products/:id", (req, res) => {
   });
   res.json(product);
 });
-app.listen(8080, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server is Up and Running.");
 });
