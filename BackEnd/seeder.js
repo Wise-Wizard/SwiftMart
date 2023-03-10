@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 require("colors");
-const users = require("./BackEnd/Data/users");
-const products = require("./BackEnd/Data/products");
-const User = require("./BackEnd/Models/userModel");
-const Product = require("./BackEnd/Models/productModel");
-const Order = require("./BackEnd/Models/orderModel");
+const users = require("./Data/users");
+const products = require("./Data/products.js");
+const User = require("./Models/userModel");
+const Product = require("./Models/productModel");
+const Order = require("./Models/orderModel");
 
-const connectDb = require("./BackEnd/Config/config");
+const connectDb = require("./Config/config");
 
 dotenv.config();
 connectDb();

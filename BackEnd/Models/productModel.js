@@ -11,7 +11,11 @@ const reviewModel = mongoose.Schema(
 
 const productSchema = mongoose.Schema(
   {
-    User: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
+    User: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: false,
+      ref: "User",
+    },
 
     name: {
       type: String,
@@ -64,4 +68,4 @@ const productSchema = mongoose.Schema(
 
 const Product = mongoose.model("Product", productSchema);
 
-export default Product;
+module.exports = Product;
