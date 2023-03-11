@@ -4,6 +4,7 @@ import ProductCard from "./ProductScreen";
 import productListAction from "../Actions/productsAction";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../Components/Loader";
+import Error from "../Components/Error";
 
 function Home() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function Home() {
       {loading ? (
         <Loader />
       ) : error ? (
-        <h2>{error}</h2>
+        <Error variant="danger" children={error}/>
       ) : (
         <Row>
           {products.map((product) => {
