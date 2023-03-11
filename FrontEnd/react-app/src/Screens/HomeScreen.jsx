@@ -1,28 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import ProductCard from "./ProductScreen";
-import axios from "axios";
+import productListAction from "../Actions/productsAction";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../Components/Loader";
 
 function Home() {
-  const [Products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+  const allProducts = useSelector((state) => state.productList);
+  const { loading, error, products } = allProducts;
   useEffect(() => {
-    const getProducts = async () => {
-      const { data } = await axios.get("http://localhost:8080/api/products");
-      setProducts(data);
-    };
-    getProducts();
-  }, []);
+    dispatch(productListAction());
+  }, [dispatch]);
   return (
     <>
-      <Row>
-        {Products.map((product) => {
-          return (
-            <Col key={product._id} md={3}>
-              <ProductCard productDetails={product} />
-            </Col>
-          );
-        })}
-      </Row>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <h2>{error}</h2>
+      ) : (
+        <Row>
+          {products.map((product) => {
+            return (
+              <Col key={product._id} md={3}>
+                <ProductCard productDetails={product} />
+              </Col>
+            );
+          })}
+        </Row>
+      )}
     </>
   );
 }
