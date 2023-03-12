@@ -4,7 +4,7 @@ import { Container } from "react-bootstrap";
 import Home from "./Screens/HomeScreen.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProductPage from "./Screens/ProductDetails";
-import Cart from "./Screens/cartScreen.jsx";
+import Cart from "./Screens/CartScreen.jsx";
 // import Spline from "@splinetool/react-spline";
 
 function App() {
