@@ -4,6 +4,7 @@ import { Container } from "react-bootstrap";
 import Home from "./Screens/HomeScreen.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProductPage from "./Screens/ProductDetails";
+import Cart from "./Screens/cartScreen.jsx";
 // import Spline from "@splinetool/react-spline";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} exact />
             <Route path="/product/:id" element={<ProductPage />} exact />
+            <Route path="/cart/:id?" element={<Cart />} exact />
           </Routes>
         </Container>
       </main>
