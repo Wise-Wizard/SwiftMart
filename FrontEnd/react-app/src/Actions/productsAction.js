@@ -6,7 +6,7 @@ const productListAction = () => async (dispatch) => {
     dispatch({ type: "PRODUCT_LIST_SUCCESS", payload: data });
   } catch (error) {
     console.log(error);
-    dispatch({ type: "PRODUCT_LIST_FAILURE", payload: error });
+    dispatch({ type: "PRODUCT_LIST_FAILURE", payload: error.message });
   }
 };
 export default productListAction;
