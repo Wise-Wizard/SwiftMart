@@ -19,5 +19,18 @@ const authController = asyncHandler(async (req, res) => {
     throw new Error("Invalid Email");
   }
 });
-
-module.exports = { authController };
+const getUserProfile = asyncHandler(async (req, res) => {
+  const loggedInUser = await User.findById(req.user._id);
+  if (loggedInUser) {
+    res.json({
+      _id: loggedInUser._id,
+      name: loggedInUser.name,
+      email: loggedInUser.email,
+      isAdmin: loggedInUser.isAdmin,
+    });
+  } else {
+    res.status(404);
+    throw new Error("User not Found!");
+  }
+});
+module.exports = { authController, getUserProfile };
