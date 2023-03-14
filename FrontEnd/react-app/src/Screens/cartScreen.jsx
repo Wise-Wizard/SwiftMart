@@ -61,7 +61,7 @@ function Cart() {
                     </Col>
                     <Col md={3}>
                       <Link to={`/product/${item.product}`}>
-                        <h5>{item.name}</h5>
+                        <h4>{item.name}</h4>
                       </Link>
                     </Col>
                     <Col md={2}>

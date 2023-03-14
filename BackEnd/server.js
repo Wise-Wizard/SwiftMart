@@ -2,7 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
+//Routes
 const productRoutes = require("./Routes/productRoutes");
+const userRoutes = require("./Routes/userRoutes");
+
 const { errorHandler } = require("./Middleware/errorMiddleware");
 const connectDB = require("./Config/config");
 
@@ -21,7 +24,10 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.send("<h1>Welcome to Node</h1>");
 });
+
+//Routes
 app.use("/api", productRoutes);
+app.use("/api/users", userRoutes);
 
 app.use(errorHandler);
 
