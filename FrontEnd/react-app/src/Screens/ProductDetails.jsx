@@ -69,7 +69,7 @@ function ProductPage() {
               <ListGroupItem variant="primary">
                 <div class="text-center">
                   <Link to={`/cart/${id}?Quantity=${QTY}`}>
-                    <button>
+                    <button className="batman">
                       <span>
                         <h5>Add to Cart</h5>
                       </span>
