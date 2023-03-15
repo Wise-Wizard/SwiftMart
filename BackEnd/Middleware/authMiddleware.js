@@ -16,10 +16,10 @@ const protectHandler = asyncHandler(async (req, res, next) => {
       res.status(401);
       throw new Error("Authorization Failed, Token Failed!");
     }
-    if (!token) {
-      res.status(401);
-      throw new Error("Please provide a Token!");
-    }
+  }
+  if (!token) {
+    res.status(401);
+    throw new Error("Please provide a Token!");
   }
 });
 module.exports = { protectHandler };
