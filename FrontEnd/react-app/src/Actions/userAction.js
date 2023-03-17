@@ -7,6 +7,11 @@ import {
 } from "../Constants/userConstants";
 import axios from "axios";
 
+export const logout = () => (dispatch) => {
+  localStorage.removeItem("userInfo");
+  dispatch({ type: USER_LOGOUT });
+};
+
 export const loginUser = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: USER_LOGIN_REQUEST });
