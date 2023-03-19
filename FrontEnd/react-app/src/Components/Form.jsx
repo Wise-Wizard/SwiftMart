@@ -69,11 +69,13 @@ import { Container, Row, Col } from "react-bootstrap";
 const FormContainer = ({ children }) => {
   return (
     <Container>
-      <Row className="justfy-content-md-center">
-        <Col xs={12} md={6}>
-          {children}
-        </Col>
-      </Row>
+      <div>
+        <Row className="justfy-content-md-center">
+          <Col xs={12} md={6}>
+            {children}
+          </Col>
+        </Row>
+      </div>
     </Container>
   );
 };

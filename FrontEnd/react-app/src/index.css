@@ -108,27 +108,12 @@ main {
 /* Batman-Button CSS */
 
 /* Form-Component CSS */
-.main {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background-color: #240046;
-  max-height: 420px;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 7px 7px 10px 3px #24004628;
-}
 
 form {
   display: flex;
   flex-direction: column;
   gap: 14px;
   padding: 24px;
-}
-
-/*checkbox to switch from sign up to login*/
-#chk {
-  display: none;
 }
 
 /*Login*/
@@ -163,79 +148,107 @@ form {
   border-radius: 4px;
 }
 
-/*Register*/
-.register {
-  background: #eee;
-  border-radius: 60% / 10%;
-  transform: translateY(5%);
-  transition: 0.8s ease-in-out;
-}
-
-.register label {
-  color: #573b8a;
-  transform: scale(0.6);
-}
-
-#chk:checked ~ .register {
-  transform: translateY(-60%);
-}
-
-#chk:checked ~ .register label {
-  transform: scale(1);
-  margin: 10% 0 5%;
-}
-
-#chk:checked ~ .login label {
-  transform: scale(0.6);
-  margin: 5% 0 5%;
-}
 /*Form Button*/
 form .loginButton {
-  background: transparent;
-  color: #fff;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  font-weight: 600;
-  border: none;
-  padding: 20px 30px;
+  position: relative;
   margin-top: 10px;
-  perspective: 30rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.308);
+  padding: 1em 1.8em;
+  outline: none;
+  border: 1px solid #303030;
+  background: #212121;
+  color: #ae00ff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 15px;
+  overflow: hidden;
+  transition: 0.2s;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-form .loginButton::before {
-  content: "";
-  display: block;
+form .loginButton:hover {
+  box-shadow: 0 0 10px #ae00ff, 0 0 25px #001eff, 0 0 50px #ae00ff;
+  transition-delay: 0.6s;
+}
+
+form .loginButton span {
   position: absolute;
-  width: 100%;
-  height: 100%;
+}
+
+form .loginButton span:nth-child(1) {
   top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ae00ff);
+}
+
+form .loginButton:hover span:nth-child(1) {
+  left: 100%;
+  transition: 0.7s;
+}
+
+form .loginButton span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #001eff);
+}
+
+form .loginButton:hover span:nth-child(3) {
+  right: 100%;
+  transition: 0.7s;
+  transition-delay: 0.35s;
+}
+
+form .loginButton span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #ae00ff);
+}
+
+form .loginButton:hover span:nth-child(2) {
+  top: 100%;
+  transition: 0.7s;
+  transition-delay: 0.17s;
+}
+
+form .loginButton span:nth-child(4) {
+  bottom: -100%;
   left: 0;
-  border-radius: 10px;
-  background: linear-gradient(
-    320deg,
-    rgba(0, 140, 255, 0.678),
-    rgba(128, 0, 128, 0.308)
-  );
-  z-index: 1;
-  transition: background 3s;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #001eff);
 }
 
-form .loginButton:hover::before {
-  animation: rotate 1s;
-  transition: all 0.5s;
+form .loginButton:hover span:nth-child(4) {
+  bottom: 100%;
+  transition: 0.7s;
+  transition-delay: 0.52s;
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotateY(180deg);
-  }
-
-  100% {
-    transform: rotateY(360deg);
-  }
+form .loginButton:active {
+  background: #ae00af;
+  background: linear-gradient(to top right, #ae00af, #001eff);
+  color: #bfbfbf;
+  box-shadow: 0 0 8px #ae00ff, 0 0 8px #001eff, 0 0 8px #ae00ff;
+  transition: 0.1s;
 }
+
+form
+  .loginButton:active
+  span:nth-child(1)
+  span:nth-child(2)
+  span:nth-child(2)
+  span:nth-child(2) {
+  transition: none;
+  transition-delay: none;
+}
+
 /*Form Button*/
 /* Form-Component CSS */
 

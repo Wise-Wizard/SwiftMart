@@ -40,72 +40,70 @@ function RegisterScreen() {
       ) : error ? (
         <Error />
       ) : (
-        <div className="main">
-          <FormContainer>
-            <div className="login">
-              <Form onSubmit={submitHandler}>
-                <Form.Group controlId={name}>
-                  <Form.FloatingLabel className="label">
-                    Name
-                  </Form.FloatingLabel>
-                  <Form.Control
-                    className="input"
-                    type="text"
-                    placeholder="Enter Name:"
-                    value={name}
-                    onChange={(e) => {
-                      setName(e.target.value);
-                    }}
-                  ></Form.Control>
-                </Form.Group>
-                <Form.Group controlId={email}>
-                  <Form.FloatingLabel className="label">
-                    Email ID
-                  </Form.FloatingLabel>
-                  <Form.Control
-                    className="input"
-                    type="email"
-                    placeholder="Enter Email ID:"
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
-                  ></Form.Control>
-                </Form.Group>
+        <FormContainer>
+          <div className="login">
+            <Form onSubmit={submitHandler}>
+              <Form.Group controlId={name}>
+                <Form.FloatingLabel className="label">Name</Form.FloatingLabel>
+                <Form.Control
+                  className="input"
+                  type="text"
+                  placeholder="Enter Name:"
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                ></Form.Control>
+              </Form.Group>
+              <Form.Group controlId={email}>
+                <Form.FloatingLabel className="label">
+                  Email ID
+                </Form.FloatingLabel>
+                <Form.Control
+                  className="input"
+                  type="email"
+                  placeholder="Enter Email ID:"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                ></Form.Control>
+              </Form.Group>
 
-                <Form.Group controlId={password}>
-                  <Form.FloatingLabel className="label">
-                    Passsword
-                  </Form.FloatingLabel>
-                  <Form.Control
-                    className="input"
-                    type="password"
-                    placeholder="Enter Password:"
-                    value={password}
-                    onChange={(e) => {
-                      setPassword(e.target.value);
-                    }}
-                  ></Form.Control>
-                </Form.Group>
-                <Button type="submit" className="loginButton">
-                  Login
-                </Button>
-                <Row className="justify-content-md-center">
-                  <Col>
-                    <h5>Have an Account?</h5>
-                    <Link
-                      to={redirect ? `/login?redirect=${redirect}` : "/login"}
-                    >
-                      <h6>Login</h6>
-                    </Link>
-                  </Col>
-                </Row>
-              </Form>
-            </div>
-          </FormContainer>
-        </div>
+              <Form.Group controlId={password}>
+                <Form.FloatingLabel className="label">
+                  Passsword
+                </Form.FloatingLabel>
+                <Form.Control
+                  className="input"
+                  type="password"
+                  placeholder="Enter Password:"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                ></Form.Control>
+              </Form.Group>
+              <Button type="submit" className="loginButton">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span> Register
+              </Button>
+              <Row className="justify-content-md-center">
+                <Col>
+                  <h3>Have an Account?</h3>
+                  <Link
+                    to={redirect ? `/login?redirect=${redirect}` : "/login"}
+                  >
+                    <h4>Login</h4>
+                  </Link>
+                </Col>
+              </Row>
+            </Form>
+          </div>
+        </FormContainer>
       )}
-      ;
     </>
   );
 }
