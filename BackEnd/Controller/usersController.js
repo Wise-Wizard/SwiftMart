@@ -9,20 +9,19 @@ const registerUser = asyncHandler(async (req, res) => {
   if (userExists) {
     res.status(401);
     throw new Error("User already exists!");
+  }
+  const currentUser = await User.create({ name, email, password });
+  if (currentUser) {
+    res.json({
+      _id: currentUser._id,
+      name: currentUser.name,
+      email: currentUser.email,
+      isAdmin: currentUser.isAdmin,
+      token: generateToken(currentUser._id),
+    });
   } else {
-    const currentUser = User.create({ name, email, password });
-    if (currentUser) {
-      res.status(201).json({
-        _id: currentUser._id,
-        name: currentUser.name,
-        email: currentUser.email,
-        isAdmin: currentUser.isAdmin,
-        token: generateToken(currentUser._id),
-      });
-    } else {
-      res.status(401);
-      throw new Error("Invalid Email and Password!");
-    }
+    res.status(401);
+    throw new Error("Invalid Email and Password!");
   }
 });
 

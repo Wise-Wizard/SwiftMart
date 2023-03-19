@@ -4,11 +4,12 @@ import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../Actions/userAction.js";
+import { registerUser } from "../Actions/userAction.js";
 import Loader from "../Components/Loader";
 import Error from "../Components/Error";
 
-function LoginScreen() {
+function RegisterScreen() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,8 +18,8 @@ function LoginScreen() {
 
   const redirect = location ? location.split("=")[1] : "/";
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userLogin;
+  const userRegister = useSelector((state) => state.userRegister);
+  const { loading, error, userInfo } = userRegister;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,7 +30,7 @@ function LoginScreen() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(loginUser(email, password));
+    dispatch(registerUser(name, email, password));
   };
 
   return (
@@ -43,6 +44,20 @@ function LoginScreen() {
           <FormContainer>
             <div className="login">
               <Form onSubmit={submitHandler}>
+                <Form.Group controlId={name}>
+                  <Form.FloatingLabel className="label">
+                    Name
+                  </Form.FloatingLabel>
+                  <Form.Control
+                    className="input"
+                    type="text"
+                    placeholder="Enter Name:"
+                    value={name}
+                    onChange={(e) => {
+                      setName(e.target.value);
+                    }}
+                  ></Form.Control>
+                </Form.Group>
                 <Form.Group controlId={email}>
                   <Form.FloatingLabel className="label">
                     Email ID
@@ -75,23 +90,23 @@ function LoginScreen() {
                 <Button type="submit" className="loginButton">
                   Login
                 </Button>
+                <Row className="justify-content-md-center">
+                  <Col>
+                    <h5>Have an Account?</h5>
+                    <Link
+                      to={redirect ? `/login?redirect=${redirect}` : "/login"}
+                    >
+                      <h6>Login</h6>
+                    </Link>
+                  </Col>
+                </Row>
               </Form>
             </div>
           </FormContainer>
-          <Row className="justify-content-md-center">
-            <Col>
-              <h5>New Customer?</h5>
-              <Link
-                to={redirect ? `/register?redirect=${redirect}` : "/register"}
-              >
-                <h6>Register</h6>
-              </Link>
-            </Col>
-          </Row>
         </div>
       )}
       ;
     </>
   );
 }
-export default LoginScreen;
+export default RegisterScreen;

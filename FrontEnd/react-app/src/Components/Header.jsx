@@ -46,7 +46,7 @@ function Header() {
                     </NavDropdown.Item>
                   </NavDropdown>
                 ) : (
-                  <LinkContainer to="/signIn">
+                  <LinkContainer to="/login">
                     <Nav.Link>
                       <PersonIcon />
                       &nbsp;Sign In

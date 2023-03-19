@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProductPage from "./Screens/ProductDetails";
 import Cart from "./Screens/CartScreen.jsx";
 import LoginScreen from "./Screens/LoginScreen.jsx";
+import RegisterScreen from "./Screens/RegisterScreen.jsx";
 // import Spline from "@splinetool/react-spline";
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
           {/* <Spline scene="https://prod.spline.design/ufgec588jlu77XD9/scene.splinecode" /> */}
           <Routes>
             <Route path="/" element={<Home />} exact />
-            <Route path="/signIn" element={<LoginScreen />} exact />
+            <Route path="/register" element={<RegisterScreen />} exact />
+            <Route path="/login" element={<LoginScreen />} exact />
             <Route path="/product/:id" element={<ProductPage />} exact />
             <Route path="/cart/:id?" element={<Cart />} exact />
           </Routes>
