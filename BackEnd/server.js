@@ -29,6 +29,7 @@ app.get("/", (req, res) => {
 app.use("/api", productRoutes);
 app.use("/api/users", userRoutes);
 
+
 app.use(errorHandler);
 
 app.listen(process.env.PORT, () => {

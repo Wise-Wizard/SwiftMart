@@ -3,6 +3,7 @@ const {
   registerUser,
   authController,
   getUserProfile,
+  updateUserProfile,
 } = require("../Controller/usersController");
 const { protectHandler } = require("../Middleware/authMiddleware");
 //Router Call
@@ -14,5 +15,8 @@ router.route("/").post(registerUser);
 router.post("/login", authController);
 
 //Fetches User Profile Data
-router.route("/profile").get(protectHandler, getUserProfile);
+router
+  .route("/profile")
+  .get(protectHandler, getUserProfile)
+  .put(protectHandler, updateUserProfile);
 module.exports = router;

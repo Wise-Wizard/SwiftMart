@@ -41,6 +41,7 @@ const authController = asyncHandler(async (req, res) => {
     throw new Error("Invalid Email");
   }
 });
+
 const getUserProfile = asyncHandler(async (req, res) => {
   const loggedInUser = await User.findById(req.user._id);
   if (loggedInUser) {
@@ -55,4 +56,31 @@ const getUserProfile = asyncHandler(async (req, res) => {
     throw new Error("User not Found!");
   }
 });
-module.exports = { registerUser, authController, getUserProfile };
+
+const updateUserProfile = asyncHandler(async (req, res) => {
+  const currentUser = await User.findById(req.user._id);
+  if (currentUser) {
+    currentUser.name = req.body.name || currentUser.name;
+    currentUser.email = req.body.email || currentUser.email;
+    if (req.body.password) {
+      currentUser.password = req.body.password;
+    }
+    const updateUser = await currentUser.save();
+    res.json({
+      _id: updateUser._id,
+      name: updateUser.name,
+      email: updateUser.email,
+      isAdmin: updateUser.isAdmin,
+      token: generateToken(updateUser._id),
+    });
+  } else {
+    res.status(404);
+    throw new Error("User Not Found");
+  }
+});
+module.exports = {
+  registerUser,
+  authController,
+  getUserProfile,
+  updateUserProfile,
+};
