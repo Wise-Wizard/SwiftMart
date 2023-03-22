@@ -7,6 +7,9 @@ import {
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
   USER_REGISTER_FAILURE,
+  USER_PROFILE_FAILURE,
+  USER_PROFILE_REQUEST,
+  USER_PROFILE_SUCCESS,
 } from "../Constants/userConstants";
 import axios from "axios";
 
@@ -45,5 +48,27 @@ export const registerUser = (name, email, password) => async (dispatch) => {
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
     dispatch({ type: USER_REGISTER_FAILURE, payload: error.message });
+  }
+};
+
+export const getUser = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: USER_PROFILE_REQUEST });
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const { data } = await axios.get(
+      `http://localhost:8080/api/users/${id}`,
+      config
+    );
+    dispatch({ type: USER_PROFILE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: USER_PROFILE_FAILURE, payload: error.message });
   }
 };

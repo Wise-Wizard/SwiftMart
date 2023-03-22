@@ -1,0 +1,108 @@
+import React from "react";
+import FormContainer from "../Components/Form";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button, Form } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../Actions/userAction.js";
+import Loader from "../Components/Loader";
+import Error from "../Components/Error";
+
+function ProfileScreen() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const Navigate = useNavigate();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const userDetails = useSelector((state) => state.userProfile);
+  const { loading, error, userProfile } = userDetails;
+  console.log(userProfile);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!userInfo) {
+      Navigate("/login");
+    } else {
+      if (!userProfile) {
+        dispatch(getUser("profile"));
+      } else {
+        setName(userProfile.name);
+        setEmail(userProfile.email);
+      }
+    }
+  }, [userInfo, Navigate, userProfile, dispatch]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(getUser(name, email, password));
+  };
+
+  return (
+    <>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Error />
+      ) : (
+        <FormContainer>
+          <div className="login">
+            <Form onSubmit={submitHandler}>
+              <Form.Group controlId={name}>
+                <Form.FloatingLabel className="label">Name</Form.FloatingLabel>
+                <Form.Control
+                  className="input"
+                  type="text"
+                  placeholder="Enter Name:"
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                ></Form.Control>
+              </Form.Group>
+              <Form.Group controlId={email}>
+                <Form.FloatingLabel className="label">
+                  Email ID
+                </Form.FloatingLabel>
+                <Form.Control
+                  className="input"
+                  type="email"
+                  placeholder="Enter Email ID:"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                ></Form.Control>
+              </Form.Group>
+
+              <Form.Group controlId={password}>
+                <Form.FloatingLabel className="label">
+                  Passsword
+                </Form.FloatingLabel>
+                <Form.Control
+                  className="input"
+                  type="password"
+                  placeholder="Enter Password:"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                ></Form.Control>
+              </Form.Group>
+              <Button type="submit" className="loginButton">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span> Register
+              </Button>
+            </Form>
+          </div>
+        </FormContainer>
+      )}
+    </>
+  );
+}
+export default ProfileScreen;
