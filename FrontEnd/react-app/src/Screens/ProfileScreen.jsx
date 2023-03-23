@@ -96,7 +96,7 @@ function ProfileScreen() {
                 <span></span>
                 <span></span>
                 <span></span>
-                <span></span> Register
+                <span></span> Update
               </Button>
             </Form>
           </div>

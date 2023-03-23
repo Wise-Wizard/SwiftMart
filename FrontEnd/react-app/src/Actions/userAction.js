@@ -10,6 +10,7 @@ import {
   USER_PROFILE_FAILURE,
   USER_PROFILE_REQUEST,
   USER_PROFILE_SUCCESS,
+  USER_UPDATE_FAILURE,
 } from "../Constants/userConstants";
 import axios from "axios";
 
@@ -70,5 +71,12 @@ export const getUser = (id) => async (dispatch, getState) => {
     dispatch({ type: USER_PROFILE_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: USER_PROFILE_FAILURE, payload: error.message });
+  }
+};
+
+export const updateUser = (id) => async (dispatch, getState) => {
+  try {
+  } catch (error) {
+    dispatch({ type: USER_UPDATE_FAILURE, payload: error.message });
   }
 };
