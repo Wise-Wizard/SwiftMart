@@ -76,10 +76,24 @@ export const getUser = (id) => async (dispatch, getState) => {
   }
 };
 
-export const updateUser = (id) => async (dispatch, getState) => {
+export const updateUser = (user) => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_UPDATE_REQUEST });
-    dispatch({type: USER_UPDATE_SUCCESS, payload: "data"})
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const { data } = await axios.get(
+      `http://localhost:8080/api/users/profile`,
+      user,
+      config
+    );
+    dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: USER_UPDATE_FAILURE, payload: error.message });
   }
