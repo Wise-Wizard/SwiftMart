@@ -95,6 +95,6 @@ export const updateUser = (user) => async (dispatch, getState) => {
     );
     dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
   } catch (error) {
-    dispatch({ type: USER_UPDATE_FAILURE, payload: error.message });
+    dispatch({ type: USER_UPDATE_FAILURE, payload: error});
   }
 };
