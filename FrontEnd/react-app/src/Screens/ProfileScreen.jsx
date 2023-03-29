@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../Actions/userAction.js";
+import { getUser, updateUser } from "../Actions/userAction.js";
 import Loader from "../Components/Loader";
 import Error from "../Components/Error";
 
@@ -18,9 +18,15 @@ function ProfileScreen() {
   const { userInfo } = userLogin;
 
   const userDetails = useSelector((state) => state.userProfile);
-  const { loading, error, userProfile } = userDetails;
-  console.log(userProfile);
 
+  const { loading, error, userProfile } = userDetails;
+  const updateUserInfo = useSelector((state) => state.userUpdateProfile);
+  const { success } = updateUserInfo;
+  if (success) {
+    console.log("hello");
+  } else {
+    console.log("hell");
+  }
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,7 +44,7 @@ function ProfileScreen() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(getUser(name, email, password));
+    dispatch(updateUser({ id: userProfile._id, name, email, password }));
   };
 
   return (

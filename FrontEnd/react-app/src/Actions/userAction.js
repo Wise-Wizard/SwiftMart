@@ -88,13 +88,13 @@ export const updateUser = (user) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.get(
+    const { data } = await axios.put(
       `http://localhost:8080/api/users/profile`,
       user,
       config
     );
     dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
   } catch (error) {
-    dispatch({ type: USER_UPDATE_FAILURE, payload: error});
+    dispatch({ type: USER_UPDATE_FAILURE, payload: error });
   }
 };
