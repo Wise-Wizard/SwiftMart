@@ -24,8 +24,6 @@ function ProfileScreen() {
   const { success } = updateUserInfo;
   if (success) {
     console.log("hello");
-  } else {
-    console.log("hell");
   }
   const dispatch = useDispatch();
 

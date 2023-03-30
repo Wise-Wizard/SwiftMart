@@ -8,6 +8,7 @@ import Cart from "./Screens/CartScreen.jsx";
 import LoginScreen from "./Screens/LoginScreen.jsx";
 import RegisterScreen from "./Screens/RegisterScreen.jsx";
 import ProfileScreen from "./Screens/ProfileScreen.jsx";
+import ShippingScreen from "./Screens/ShippingScreen.jsx";
 // import Spline from "@splinetool/react-spline";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/profile" element={<ProfileScreen />} exact />
             <Route path="/product/:id" element={<ProductPage />} exact />
             <Route path="/cart/:id?" element={<Cart />} exact />
+            <Route path="/shipping" element={<ShippingScreen />} exact />
           </Routes>
         </Container>
       </main>

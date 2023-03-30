@@ -36,7 +36,7 @@ function Cart() {
   };
 
   function checkout() {
-    Navigate("/login?redirect=shipping");
+    Navigate(`/login?redirect=/shipping`);
   }
   return (
     <>
