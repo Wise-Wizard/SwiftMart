@@ -9,6 +9,7 @@ import LoginScreen from "./Screens/LoginScreen.jsx";
 import RegisterScreen from "./Screens/RegisterScreen.jsx";
 import ProfileScreen from "./Screens/ProfileScreen.jsx";
 import ShippingScreen from "./Screens/ShippingScreen.jsx";
+import Payment from "./Screens/PaymentScreen.jsx";
 // import Spline from "@splinetool/react-spline";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/product/:id" element={<ProductPage />} exact />
             <Route path="/cart/:id?" element={<Cart />} exact />
             <Route path="/shipping" element={<ShippingScreen />} exact />
+            <Route path="/payment" element={<Payment />} exact />
           </Routes>
         </Container>
       </main>
