@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 //Routes
 const productRoutes = require("./Routes/productRoutes");
 const userRoutes = require("./Routes/userRoutes");
+const orderRoutes = require("./Routes/orderRoutes");
 
 const { errorHandler } = require("./Middleware/errorMiddleware");
 const connectDB = require("./Config/config");
@@ -28,7 +29,7 @@ app.get("/", (req, res) => {
 //Routes
 app.use("/api", productRoutes);
 app.use("/api/users", userRoutes);
-
+app.use("/api/orders", orderRoutes);
 
 app.use(errorHandler);
 
