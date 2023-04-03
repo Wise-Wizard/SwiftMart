@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { PayPalButton } from "react-paypal-button-v2";
 import axios from "axios";
 import { ORDER_PAY_RESET } from "../Constants/orderConstants";
-import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
+import { Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { getOrderDetails, payOrder } from "../Actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../Components/Error";
+import Error from "../Components/Error";
 import Loader from "../Components/Loader";
 
 const OrderScreen = ({ match }) => {
@@ -62,7 +62,7 @@ const OrderScreen = ({ match }) => {
   return loading ? (
     <Loader />
   ) : error ? (
-    <Message variant="danger">{error}</Message>
+    <Error variant="danger">{error}</Error>
   ) : (
     <>
       <h2>Order {order._id}</h2>
@@ -86,9 +86,9 @@ const OrderScreen = ({ match }) => {
               {order.shippingAddress.country}&nbsp;
             </p>
             {order.isDeliverd ? (
-              <Message variant="success">Paid On {order.isDeliverd}</Message>
+              <Error variant="success">Paid On {order.isDeliverd}</Error>
             ) : (
-              <Message variant="danger">Not Deliverd</Message>
+              <Error variant="danger">Not Deliverd</Error>
             )}
           </ListGroup.Item>
           <ListGroup.Item>
@@ -98,15 +98,15 @@ const OrderScreen = ({ match }) => {
               <strong>{order.paymentMethod}</strong>
             </p>
             {order.isPaid ? (
-              <Message variant="success">Paid On {order.paidAt}</Message>
+              <Error variant="success">Paid On {order.paidAt}</Error>
             ) : (
-              <Message variant="danger">Not Paid</Message>
+              <Error variant="danger">Not Paid</Error>
             )}
           </ListGroup.Item>
           <ListGroup.Item>
             <h2>Order Items</h2>
             {order.orderItems.length === 0 ? (
-              <Message>Your Cart is Empty</Message>
+              <Error>Your Cart is Empty</Error>
             ) : (
               <ListGroup variant="flush">
                 {order.orderItems.map((item, index) => (
@@ -153,7 +153,7 @@ const OrderScreen = ({ match }) => {
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
-                {error && <Message variant="danger">{error}</Message>}
+                {error && <Error variant="danger">{error}</Error>}
               </ListGroup.Item>
             </ListGroup>
           </Card>
